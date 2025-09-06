@@ -1,0 +1,64 @@
+### Create a Product
+POST https://localhost:7000/api/products
+Content-Type: application/json
+
+{
+  "name": "Gaming Laptop",
+  "description": "High-performance gaming laptop with RTX 4080",
+  "price": 1299.99,
+  "stockQuantity": 50
+}
+
+### Get All Products
+GET https://localhost:7000/api/products?pageNumber=1&pageSize=10
+
+### Get Products with Filter
+GET https://localhost:7000/api/products?pageNumber=1&pageSize=10&nameFilter=laptop
+
+### Get Product by ID (replace with actual ID)
+GET https://localhost:7000/api/products/12345678-1234-1234-1234-123456789012
+
+### Update Product (replace with actual ID and RowVersion)
+PUT https://localhost:7000/api/products/12345678-1234-1234-1234-123456789012
+Content-Type: application/json
+
+{
+  "name": "Gaming Laptop Pro",
+  "description": "Updated high-performance gaming laptop with RTX 4090",
+  "price": 1599.99,
+  "stockQuantity": 45,
+  "rowVersion": "AAAAAAAAB9E="
+}
+
+### Delete Product (replace with actual ID)
+DELETE https://localhost:7000/api/products/12345678-1234-1234-1234-123456789012
+
+### Place an Order (replace with actual product ID)
+POST https://localhost:7000/api/orders
+Content-Type: application/json
+
+{
+  "orderItems": [
+    {
+      "productId": "12345678-1234-1234-1234-123456789012",
+      "quantity": 2
+    }
+  ]
+}
+
+### Place Multiple Item Order
+POST https://localhost:7000/api/orders
+Content-Type: application/json
+
+{
+  "orderItems": [
+    {
+      "productId": "12345678-1234-1234-1234-123456789012",
+      "quantity": 1
+    },
+    {
+      "productId": "87654321-4321-4321-4321-210987654321",
+      "quantity": 3
+    }
+  ]
+}
