@@ -9,6 +9,10 @@ using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure for Render deployment
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+
 // Serilog configuration
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
@@ -62,6 +66,9 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Root endpoint for Render health checks
+app.MapGet("/", () => "ProductCatalogAPI is running");
 
 // Ensure database is created
 using (var scope = app.Services.CreateScope())
